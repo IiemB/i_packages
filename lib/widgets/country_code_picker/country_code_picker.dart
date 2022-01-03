@@ -123,7 +123,7 @@ class _ICountryCodePickerState extends State<ICountryCodePicker> {
                         ListTile(
                           leading: Image.asset(
                             'assets/flags/${filteredCountries[index].code.toLowerCase()}.png',
-                            package: 'intl_phone_number_picker',
+                            package: 'i_packages',
                             width: 32,
                           ),
                           title: Text(
@@ -185,7 +185,7 @@ class _ICountryCodePickerState extends State<ICountryCodePicker> {
               if (widget.showCountryFlag) ...[
                 Image.asset(
                   'assets/flags/${_selectedCountry.code.toLowerCase()}.png',
-                  package: 'intl_phone_number_picker',
+                  package: 'i_packages',
                   width: 32,
                 ),
                 const SizedBox(width: 8)

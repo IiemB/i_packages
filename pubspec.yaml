@@ -32,11 +32,11 @@ flutter: null
 # To add assets to your package, add an assets section, like this:
 assets:
   # - images/a_dot_burr.jpeg
-  - assets/icons/icon.png
+  - assets/flags/
   - assets/lottie/loading_coffee_beans.zip
   - assets/lottie/empty_state_tumbleweed.zip
   - assets/lottie/people_morph_flow.zip
-  - assets/flags/
+  
 
 #
 # For details regarding assets in packages, see

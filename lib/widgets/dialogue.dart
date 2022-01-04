@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:i_packages/configs/configs.dart';
-import 'package:sms_autofill/sms_autofill.dart';
 
 class IDialogue {
   static Future<void> showLoadingDialogue({
@@ -107,71 +106,6 @@ class IDialogue {
             child: Text(
               'Ok'.tr,
               style: const TextStyle(color: Colors.black),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  static Future<void> showVerificationOTPDialogue({
-    required void Function()? onPressed,
-    bool? barrierDismissible,
-    Color? backgroundColor,
-    dynamic Function(String)? onCodeSubmitted,
-    dynamic Function(String)? onCodeChanged,
-    String? currentCode,
-  }) async {
-    if (Get.isDialogOpen!) {
-      Get.back();
-    }
-
-    const OutlineInputBorder _border = OutlineInputBorder(
-      borderRadius: IStyles.borderRadiusAll,
-      borderSide: BorderSide(color: Colors.blueGrey),
-    );
-
-    await Get.defaultDialog(
-      radius: IStyles.radiusValue,
-      barrierDismissible: barrierDismissible ?? true,
-      title: 'Enter the verification code'.tr,
-      backgroundColor: backgroundColor,
-      content: Column(
-        children: [
-          Text(
-            'Please enter the verification code sent to your phone number'.tr,
-            textAlign: TextAlign.center,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: TextFieldPinAutoFill(
-              autoFocus: true,
-              onCodeSubmitted: onCodeSubmitted,
-              onCodeChanged: onCodeChanged,
-              currentCode: currentCode,
-              decoration: InputDecoration(
-                hintText: 'Enter code'.tr,
-                border: _border,
-                errorBorder: _border,
-                enabledBorder: _border,
-                focusedBorder: _border,
-                disabledBorder: _border,
-              ),
-            ),
-          ),
-        ],
-      ),
-      actions: [
-        SizedBox(
-          width: Get.width / 2,
-          child: ElevatedButton(
-            onPressed: onPressed,
-            style: IStyles.elevatedButtonStyle(
-              primary: Get.theme.colorScheme.secondary,
-            ),
-            child: Text(
-              'Confirm'.tr,
-              style: const TextStyle(fontSize: 20),
             ),
           ),
         ),

@@ -26,15 +26,12 @@ dev_dependencies:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter.
-flutter: null
-
-# To add assets to your package, add an assets section, like this:
-assets:
-  # - images/a_dot_burr.jpeg
-  - assets/flags/
-  - assets/lottie/loading_coffee_beans.zip
-  - assets/lottie/empty_state_tumbleweed.zip
-  - assets/lottie/people_morph_flow.zip
+flutter:
+  assets:
+    - assets/flags/
+    - assets/lottie/loading_coffee_beans.zip
+    - assets/lottie/empty_state_tumbleweed.zip
+    - assets/lottie/people_morph_flow.zip
   
 
 #

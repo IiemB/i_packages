@@ -8,7 +8,7 @@ class ILaunchUrl {
     try {
       await launch(url, forceSafariVC: false);
     } catch (e) {
-      throw 'Could not launch $url [$e]';
+      throw Exception('Could not launch $url [$e]');
     }
   }
 
@@ -36,7 +36,7 @@ class ILaunchUrl {
         webOnlyWindowName: webOnlyWindowName,
       );
     } catch (e) {
-      throw 'Could not launch $url [$e]';
+      throw Exception('Could not launch $url [$e]');
     }
   }
 }

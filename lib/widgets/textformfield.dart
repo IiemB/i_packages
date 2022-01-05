@@ -8,8 +8,10 @@ class ITextFormField extends StatelessWidget {
   final Widget? prefixIcon;
   final Widget? suffix;
   final bool? obscureText;
+  final bool readOnly;
   final String? Function(String?)? validator;
   final String? Function(String?)? onChanged;
+  final void Function()? onTap;
   final TextInputType? keyboardType;
   final TextStyle? textStyle;
   final Iterable<String>? autofillHints;
@@ -36,7 +38,15 @@ class ITextFormField extends StatelessWidget {
     this.textAlign,
     this.maxLenght,
     this.autoFocus = false,
-  }) : super(key: key);
+    this.readOnly = false,
+    this.onTap,
+  })  : assert(maxLines == null || maxLines > 0),
+        assert(minLines == null || minLines > 0),
+        assert(
+          (maxLines == null) || (minLines == null) || (maxLines >= minLines),
+          "minLines can't be greater than maxLines",
+        ),
+        super(key: key);
 
   static const OutlineInputBorder _border = OutlineInputBorder(
     borderRadius: IStyles.borderRadiusAll,
@@ -70,12 +80,14 @@ class ITextFormField extends StatelessWidget {
           disabledBorder: _border,
           suffix: suffix,
         ),
+        onTap: onTap,
+        readOnly: readOnly,
         style: textStyle,
         obscureText: obscureText!,
         validator: validator,
         onChanged: onChanged,
         maxLines: maxLines,
-        minLines: minLines ?? 1,
+        minLines: minLines,
       ),
     );
   }

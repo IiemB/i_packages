@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:i_packages/configs/configs.dart';
 
@@ -20,6 +21,11 @@ class ITextFormField extends StatelessWidget {
   final TextAlign? textAlign;
   final int? maxLenght;
   final bool autoFocus;
+  final FocusNode? focusNode;
+  final void Function()? onEditingComplete;
+  final void Function(String)? onFieldSubmitted;
+  final void Function(String?)? onSaved;
+  final List<TextInputFormatter>? inputFormatters;
 
   const ITextFormField({
     Key? key,
@@ -32,6 +38,7 @@ class ITextFormField extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.onChanged,
     this.textStyle,
+    this.focusNode,
     this.maxLines = 1,
     this.minLines,
     this.autofillHints,
@@ -40,6 +47,10 @@ class ITextFormField extends StatelessWidget {
     this.autoFocus = false,
     this.readOnly = false,
     this.onTap,
+    this.onEditingComplete,
+    this.onFieldSubmitted,
+    this.onSaved,
+    this.inputFormatters,
   })  : assert(maxLines == null || maxLines > 0),
         assert(minLines == null || minLines > 0),
         assert(
@@ -55,40 +66,42 @@ class ITextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: TextFormField(
-        controller: controller,
-        key: Key(labelText.replaceAll(' ', '')),
-        maxLength: maxLenght,
-        autofillHints: autofillHints,
-        autofocus: autoFocus,
-        keyboardType: keyboardType,
-        textAlign: textAlign ?? TextAlign.start,
-        textCapitalization: TextCapitalization.sentences,
-        decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(20),
-          hintText: labelText,
-          border: _border,
-          enabledBorder: _border,
-          focusedBorder: _border,
-          errorBorder: _border,
-          focusedErrorBorder: _border,
-          prefixIcon: prefixIcon,
-          filled: true,
-          fillColor: Get.theme.inputDecorationTheme.fillColor,
-          disabledBorder: _border,
-          suffix: suffix,
-        ),
-        onTap: onTap,
-        readOnly: readOnly,
-        style: textStyle,
-        obscureText: obscureText!,
-        validator: validator,
-        onChanged: onChanged,
-        maxLines: maxLines,
-        minLines: minLines,
+    return TextFormField(
+      controller: controller,
+      key: Key(labelText.replaceAll(' ', '')),
+      maxLength: maxLenght,
+      autofillHints: autofillHints,
+      autofocus: autoFocus,
+      keyboardType: keyboardType,
+      textAlign: textAlign ?? TextAlign.start,
+      textCapitalization: TextCapitalization.sentences,
+      decoration: InputDecoration(
+        contentPadding: const EdgeInsets.all(20),
+        hintText: labelText,
+        border: _border,
+        enabledBorder: _border,
+        focusedBorder: _border,
+        errorBorder: _border,
+        focusedErrorBorder: _border,
+        prefixIcon: prefixIcon,
+        filled: true,
+        fillColor: Get.theme.inputDecorationTheme.fillColor,
+        disabledBorder: _border,
+        suffix: suffix,
       ),
+      focusNode: focusNode,
+      onTap: onTap,
+      readOnly: readOnly,
+      style: textStyle,
+      obscureText: obscureText!,
+      validator: validator,
+      onChanged: onChanged,
+      maxLines: maxLines,
+      minLines: minLines,
+      onEditingComplete: onEditingComplete,
+      onFieldSubmitted: onFieldSubmitted,
+      onSaved: onSaved,
+      inputFormatters: inputFormatters,
     );
   }
 }

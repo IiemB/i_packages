@@ -5,6 +5,7 @@ import 'package:i_packages/configs/configs.dart';
 
 class ITextFormField extends StatelessWidget {
   final TextEditingController? controller;
+  final String? initialValue;
   final String labelText;
   final Widget? prefixIcon;
   final Widget? suffix;
@@ -30,6 +31,7 @@ class ITextFormField extends StatelessWidget {
   const ITextFormField({
     Key? key,
     this.controller,
+    this.initialValue,
     required this.labelText,
     this.prefixIcon,
     this.suffix,
@@ -70,6 +72,7 @@ class ITextFormField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: TextFormField(
         controller: controller,
+        initialValue: initialValue,
         key: Key(labelText.replaceAll(' ', '')),
         maxLength: maxLenght,
         autofillHints: autofillHints,

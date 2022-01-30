@@ -1,7 +1,7 @@
 name: i_packages
 description: A new Flutter package project.
 version: 0.0.1
-homepage: null
+homepage: "null"
 
 environment:
   sdk: ">=2.15.1 <3.0.0"
@@ -32,8 +32,6 @@ flutter:
     - assets/lottie/loading_coffee_beans.zip
     - assets/lottie/empty_state_tumbleweed.zip
     - assets/lottie/people_morph_flow.zip
-  
-
 #
 # For details regarding assets in packages, see
 # https://flutter.dev/assets-and-images/#from-packages

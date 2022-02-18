@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:i_packages/i_packages.dart';
 
 class IDialogue {
@@ -42,7 +41,11 @@ class IDialogue {
         return WillPopScope(
           onWillPop: onWillPop,
           child: AlertDialog(
-            content: content ?? const CircularProgressIndicator(),
+            content: content ??
+                SizedBox.square(
+                  dimension: ISizer.widthPercent(context, 10),
+                  child: const CircularProgressIndicator(),
+                ),
             backgroundColor: backgroundColor,
             shape: IStyles.shape,
           ),
@@ -81,33 +84,8 @@ class IDialogue {
             titleTextStyle: titleStyle,
             actions: actions ??
                 [
-                  SizedBox(
-                    width: ISizer.widthPercent(context, 20),
-                    child: ElevatedButton(
-                      style: IStyles.elevatedButtonStyle(
-                        primary: IThemes.theme(context).colorScheme.secondary,
-                      ),
-                      onPressed: onCancel,
-                      child: Text(
-                        'No'.tr,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 30,
-                  ),
-                  SizedBox(
-                    width: ISizer.widthPercent(context, 20),
-                    child: ElevatedButton(
-                      style: IStyles.elevatedButtonStyle(
-                        primary: IThemes.theme(context).colorScheme.secondary,
-                      ),
-                      onPressed: onConfirm,
-                      child: Text(
-                        'Yes'.tr,
-                      ),
-                    ),
-                  ),
+                  TextButton(onPressed: onCancel, child: const Text('No')),
+                  TextButton(onPressed: onConfirm, child: const Text('Yes')),
                 ],
           ),
         );
@@ -134,18 +112,15 @@ class IDialogue {
         return AlertDialog(
           backgroundColor: backgroundColor,
           shape: IStyles.shape,
-          title: Text('Error'.tr),
+          title: const Text('Error'),
           content: Text(middleText),
           actions: [
-            SizedBox(
-              width: ISizer.heightFull(context) / 3,
-              child: ElevatedButton(
-                style: IStyles.elevatedButtonStyle(
-                  primary: IThemes.theme(context).colorScheme.secondary,
-                ),
-                onPressed: () => Navigator.pop(context),
-                child: Text('Ok'.tr),
+            TextButton(
+              style: IStyles.elevatedButtonStyle(
+                primary: IThemes.theme(context).colorScheme.secondary,
               ),
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Ok'),
             ),
           ],
         );

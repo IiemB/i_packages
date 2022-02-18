@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:i_packages/configs/configs.dart';
 
 class ICard extends StatelessWidget {
@@ -16,7 +15,8 @@ class ICard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: backgroundColor ?? Get.theme.inputDecorationTheme.fillColor,
+      color:
+          backgroundColor ?? Theme.of(context).inputDecorationTheme.fillColor,
       elevation: 0,
       margin: const EdgeInsets.symmetric(vertical: 5),
       shape: RoundedRectangleBorder(

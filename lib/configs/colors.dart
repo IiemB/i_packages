@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class IColors {
   static const Color colorEt = Colors.green;
@@ -7,8 +6,12 @@ class IColors {
   static const Color colorBt = Colors.blue;
   static const Color colorRorBT = Colors.red;
 
-  static final Color primary = Get.theme.colorScheme.primary;
-  static final Color primaryVariant = Get.theme.colorScheme.primary;
-  static final Color secondary = Get.theme.colorScheme.secondary;
-  static final Color secondaryVariant = Get.theme.colorScheme.secondary;
+  static Color primary(BuildContext context) =>
+      Theme.of(context).colorScheme.primary;
+  static Color primaryVariant(BuildContext context) =>
+      Theme.of(context).colorScheme.primary;
+  static Color secondary(BuildContext context) =>
+      Theme.of(context).colorScheme.secondary;
+  static Color secondaryVariant(BuildContext context) =>
+      Theme.of(context).colorScheme.secondary;
 }

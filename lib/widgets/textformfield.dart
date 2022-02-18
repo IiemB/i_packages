@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 import 'package:i_packages/configs/configs.dart';
 
 class ITextFormField extends StatelessWidget {
@@ -27,6 +26,7 @@ class ITextFormField extends StatelessWidget {
   final void Function(String)? onFieldSubmitted;
   final void Function(String?)? onSaved;
   final List<TextInputFormatter>? inputFormatters;
+  final TextInputAction? textInputAction;
 
   const ITextFormField({
     Key? key,
@@ -53,6 +53,7 @@ class ITextFormField extends StatelessWidget {
     this.onFieldSubmitted,
     this.onSaved,
     this.inputFormatters,
+    this.textInputAction,
   })  : assert(maxLines == null || maxLines > 0),
         assert(minLines == null || minLines > 0),
         assert(
@@ -90,7 +91,7 @@ class ITextFormField extends StatelessWidget {
           focusedErrorBorder: _border,
           prefixIcon: prefixIcon,
           filled: true,
-          fillColor: Get.theme.inputDecorationTheme.fillColor,
+          fillColor: Theme.of(context).inputDecorationTheme.fillColor,
           disabledBorder: _border,
           suffix: suffix,
         ),

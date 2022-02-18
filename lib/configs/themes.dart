@@ -5,6 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 class IThemes {
   static final String? _fontFamily = GoogleFonts.openSans().fontFamily;
 
+  static ThemeData theme(BuildContext context) => Theme.of(context);
+
   static final lightTheme = FlexThemeData.light(
     scheme: FlexScheme.aquaBlue,
     surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,

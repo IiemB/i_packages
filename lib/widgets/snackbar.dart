@@ -40,7 +40,6 @@ class ISnackbar {
         content: Text(message),
         behavior: SnackBarBehavior.floating,
         action: action,
-        backgroundColor: Theme.of(context).errorColor,
         shape: IStyles.shape,
       ),
     );

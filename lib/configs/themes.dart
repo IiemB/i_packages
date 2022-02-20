@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class IThemes {
+  IThemes._();
+
   static final String? _fontFamily = GoogleFonts.openSans().fontFamily;
 
   static ThemeData theme(BuildContext context) => Theme.of(context);

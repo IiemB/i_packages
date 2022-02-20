@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class IStyles {
+  IStyles._();
+
   /// radiusValue
   static const double radiusValue = 16;
 

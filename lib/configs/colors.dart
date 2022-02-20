@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class IColors {
+  IColors._();
+
   static const Color colorEt = Colors.green;
   static const Color colorRorET = Colors.teal;
   static const Color colorBt = Colors.blue;

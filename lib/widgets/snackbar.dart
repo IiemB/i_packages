@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:i_packages/configs/configs.dart';
 
 class ISnackbar {
+  ISnackbar._();
+
   static Future<void> showErrorSnakbar(
     BuildContext context, {
     required String message,

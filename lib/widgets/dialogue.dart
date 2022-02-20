@@ -116,9 +116,6 @@ class IDialogue {
           content: Text(middleText),
           actions: [
             TextButton(
-              style: IStyles.elevatedButtonStyle(
-                primary: IThemes.theme(context).colorScheme.secondary,
-              ),
               onPressed: () => Navigator.pop(context),
               child: const Text('Ok'),
             ),

@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:url_launcher/url_launcher.dart';
 
 class ILaunchUrl {
+  ILaunchUrl._();
+
   static Future<void> launchCroasterFeedbackAndHelp() async {
     const String url = 'https://t.me/CroasterSupport';
     try {

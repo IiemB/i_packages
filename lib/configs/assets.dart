@@ -1,4 +1,6 @@
-class IIAssets {
+class IAssets {
+  IAssets._();
+
   static const String emptyStateTumbleweed =
       'assets/lottie/empty_state_tumbleweed.zip';
   static const String loadingCoffeeBeans =

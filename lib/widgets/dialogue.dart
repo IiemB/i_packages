@@ -5,7 +5,7 @@ import 'package:i_packages/widgets/gap.dart';
 class IDialogue {
   static bool isDialogueOpen = false;
 
-  static Future<void> show(
+  static Future<T?> show<T>(
     BuildContext context, {
     required Widget alertDialog,
     Future<bool> Function()? onWillPop,
@@ -14,7 +14,7 @@ class IDialogue {
   }) async {
     isDialogueOpen = true;
 
-    await showDialog(
+    final _result = await showDialog<T>(
       context: context,
       barrierDismissible: barrierDismissible,
       builder: (context) {
@@ -24,6 +24,8 @@ class IDialogue {
         );
       },
     ).whenComplete(() => isDialogueOpen = false);
+
+    return _result;
   }
 
   static Future<void> showLoadingDialogue(

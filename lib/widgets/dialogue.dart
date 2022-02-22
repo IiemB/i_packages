@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:i_packages/i_packages.dart';
+import 'package:i_packages/widgets/gap.dart';
 
 class IDialogue {
   static bool isDialogueOpen = false;
@@ -42,9 +43,16 @@ class IDialogue {
           onWillPop: onWillPop,
           child: AlertDialog(
             content: content ??
-                SizedBox.square(
-                  dimension: ISizer.widthPercent(context, 10),
-                  child: const CircularProgressIndicator(),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SizedBox.square(
+                      dimension: ISizer.widthPercent(context, 10),
+                      child: const CircularProgressIndicator(),
+                    ),
+                    const IGap(),
+                    const Text('Loading')
+                  ],
                 ),
             backgroundColor: backgroundColor,
             shape: IStyles.shape,
@@ -63,7 +71,9 @@ class IDialogue {
     List<Widget>? actions,
     Color? backgroundColor,
     void Function()? onConfirm,
+    String confirmText = 'OK',
     void Function()? onCancel,
+    String cancelText = 'Cancel',
     TextStyle? titleStyle,
     TextStyle? middleTextStyle,
     Future<bool> Function()? onWillPop,
@@ -84,8 +94,8 @@ class IDialogue {
             titleTextStyle: titleStyle,
             actions: actions ??
                 [
-                  TextButton(onPressed: onCancel, child: const Text('No')),
-                  TextButton(onPressed: onConfirm, child: const Text('Yes')),
+                  TextButton(onPressed: onCancel, child: Text(cancelText)),
+                  TextButton(onPressed: onConfirm, child: Text(confirmText)),
                 ],
           ),
         );
@@ -98,6 +108,7 @@ class IDialogue {
     required String middleText,
     bool barrierDismissible = true,
     Color? backgroundColor,
+    String mainTextButton = 'OK',
   }) async {
     if (isDialogueOpen) {
       Navigator.pop(context);
@@ -117,7 +128,7 @@ class IDialogue {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Ok'),
+              child: Text(mainTextButton),
             ),
           ],
         );

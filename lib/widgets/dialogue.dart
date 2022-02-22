@@ -92,7 +92,7 @@ class IDialogue {
             backgroundColor: backgroundColor,
             shape: IStyles.shape,
             title: Text(title),
-            content: Text(middleText),
+            content: content ?? Text(middleText),
             titleTextStyle: titleStyle,
             actions: actions ??
                 [

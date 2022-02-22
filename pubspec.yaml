@@ -27,6 +27,7 @@ dev_dependencies:
 flutter:
   assets:
     - assets/flags/
+    - assets/lottie/
     - assets/lottie/loading_coffee_beans.zip
     - assets/lottie/empty_state_tumbleweed.zip
     - assets/lottie/people_morph_flow.zip

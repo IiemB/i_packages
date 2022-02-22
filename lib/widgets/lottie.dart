@@ -25,6 +25,7 @@ class ILottie extends StatelessWidget {
               frameRate: frameRate ?? FrameRate.max,
               fit: fit,
               width: width,
+              package: 'i_packages',
             );
           case ILottieStyle.loadingCoffeeBeans:
             return Lottie.asset(
@@ -32,6 +33,7 @@ class ILottie extends StatelessWidget {
               frameRate: frameRate ?? FrameRate.max,
               fit: fit,
               width: width,
+              package: 'i_packages',
             );
           case ILottieStyle.profilePeopleMorph:
             return Lottie.asset(
@@ -39,6 +41,7 @@ class ILottie extends StatelessWidget {
               frameRate: frameRate ?? FrameRate.max,
               fit: fit,
               width: width,
+              package: 'i_packages',
             );
         }
       },

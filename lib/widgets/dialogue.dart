@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:i_packages/i_packages.dart';
-import 'package:i_packages/widgets/gap.dart';
 
 class IDialogue {
   static bool isDialogueOpen = false;
@@ -34,6 +33,7 @@ class IDialogue {
     bool barrierDismissible = true,
     Color? backgroundColor,
     Future<bool> Function()? onWillPop,
+    String loadingText = 'Loading',
   }) async {
     isDialogueOpen = true;
 
@@ -53,7 +53,7 @@ class IDialogue {
                       child: const CircularProgressIndicator(),
                     ),
                     const IGap(),
-                    const Text('Loading')
+                    Text(loadingText)
                   ],
                 ),
             backgroundColor: backgroundColor,

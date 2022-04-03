@@ -72,7 +72,7 @@ class ISnackbar {
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox.square(
-              dimension: ISizer.widthPercent(context, 5),
+              dimension: context.width / 5,
               child: const CircularProgressIndicator(),
             ),
             const IGap(),

@@ -4,20 +4,17 @@ version: 0.0.1
 homepage: "null"
 
 environment:
-  sdk: ">=2.16.0 <3.0.0"
+  sdk: ">=2.16.2 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
-  flex_color_scheme: ^4.1.1
   flutter:
     sdk: flutter
-  google_fonts: ^2.2.0
   intl: ^0.17.0
   lottie: ^1.2.1
-  url_launcher: ^6.0.17
 
 dev_dependencies:
-  flutter_lints: ^1.0.0
+  flutter_lints: ^1.0.4
   flutter_test:
     sdk: flutter
 
@@ -28,9 +25,6 @@ flutter:
   assets:
     - assets/flags/
     - assets/lottie/
-    - assets/lottie/loading_coffee_beans.zip
-    - assets/lottie/empty_state_tumbleweed.zip
-    - assets/lottie/people_morph_flow.zip
 #
 # For details regarding assets in packages, see
 # https://flutter.dev/assets-and-images/#from-packages

@@ -49,7 +49,7 @@ class IDialogue {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     SizedBox.square(
-                      dimension: ISizer.widthPercent(context, 10),
+                      dimension: context.width / 10,
                       child: const CircularProgressIndicator(),
                     ),
                     const IGap(),

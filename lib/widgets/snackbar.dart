@@ -21,6 +21,8 @@ class ISnackbar {
         action: action ??
             SnackBarAction(
               label: 'Hide',
+              // FIXME
+              textColor: Colors.black,
               onPressed: () =>
                   ScaffoldMessenger.of(context).hideCurrentSnackBar(),
             ),
@@ -47,6 +49,7 @@ class ISnackbar {
         action: action ??
             SnackBarAction(
               label: 'Hide',
+              textColor: context.theme.snackBarTheme.contentTextStyle?.color,
               onPressed: () =>
                   ScaffoldMessenger.of(context).hideCurrentSnackBar(),
             ),
@@ -72,7 +75,7 @@ class ISnackbar {
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox.square(
-              dimension: context.width / 5,
+              dimension: context.widthByPercent(5),
               child: const CircularProgressIndicator(),
             ),
             const IGap(),
@@ -83,6 +86,7 @@ class ISnackbar {
         action: action ??
             SnackBarAction(
               label: 'Hide',
+              textColor: context.theme.snackBarTheme.contentTextStyle?.color,
               onPressed: () =>
                   ScaffoldMessenger.of(context).hideCurrentSnackBar(),
             ),

@@ -5,6 +5,12 @@ extension BuildContextExtension on BuildContext {
 
   double get height => MediaQuery.of(this).size.height;
 
+  double widthByPercent(int percent) =>
+      MediaQuery.of(this).size.width * (percent / 100);
+
+  double heightByPercent(int percent) =>
+      MediaQuery.of(this).size.height * (percent / 100);
+
   ThemeData get theme => Theme.of(this);
 }
 

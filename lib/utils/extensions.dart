@@ -28,4 +28,7 @@ extension IntExtension on int {
     final String twoDigitSeconds = twoDigits(duration.inSeconds.remainder(60));
     return "$twoDigitMinutes:$twoDigitSeconds";
   }
+
+  Future<void> get secondsDelay async =>
+      await Future.delayed(Duration(seconds: this));
 }

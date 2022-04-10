@@ -8,7 +8,9 @@ class ISnackbar {
     BuildContext context, {
     required String message,
     bool clearQueue = true,
-    SnackBarAction? action,
+    Duration snackBarDuration = const Duration(seconds: 4),
+    String actionLabel = 'Hide',
+    void Function()? onAction,
   }) async {
     if (clearQueue) {
       ScaffoldMessenger.of(context).clearSnackBars();
@@ -18,14 +20,13 @@ class ISnackbar {
       SnackBar(
         content: Text(message),
         behavior: SnackBarBehavior.floating,
-        action: action ??
-            SnackBarAction(
-              label: 'Hide',
-              // FIXME
-              textColor: Colors.black,
-              onPressed: () =>
-                  ScaffoldMessenger.of(context).hideCurrentSnackBar(),
-            ),
+        duration: snackBarDuration,
+        action: SnackBarAction(
+          label: actionLabel,
+          textColor: context.theme.bottomAppBarColor,
+          onPressed: onAction ??
+              () => ScaffoldMessenger.of(context).hideCurrentSnackBar(),
+        ),
         backgroundColor: Theme.of(context).errorColor,
         shape: IStyles.shape,
       ),
@@ -36,7 +37,9 @@ class ISnackbar {
     BuildContext context, {
     required String message,
     bool clearQueue = true,
-    SnackBarAction? action,
+    Duration snackBarDuration = const Duration(seconds: 4),
+    String actionLabel = 'Hide',
+    void Function()? onAction,
   }) async {
     if (clearQueue) {
       ScaffoldMessenger.of(context).clearSnackBars();
@@ -46,13 +49,12 @@ class ISnackbar {
       SnackBar(
         content: Text(message),
         behavior: SnackBarBehavior.floating,
-        action: action ??
-            SnackBarAction(
-              label: 'Hide',
-              textColor: context.theme.snackBarTheme.contentTextStyle?.color,
-              onPressed: () =>
-                  ScaffoldMessenger.of(context).hideCurrentSnackBar(),
-            ),
+        action: SnackBarAction(
+          label: actionLabel,
+          textColor: context.theme.bottomAppBarColor,
+          onPressed: onAction ??
+              () => ScaffoldMessenger.of(context).hideCurrentSnackBar(),
+        ),
         shape: IStyles.shape,
       ),
     );
@@ -62,8 +64,9 @@ class ISnackbar {
     BuildContext context, {
     bool clearQueue = true,
     String loadingText = 'Loading',
-    SnackBarAction? action,
     Duration duration = const Duration(seconds: 30),
+    String actionLabel = 'Hide',
+    void Function()? onAction,
   }) async {
     if (clearQueue) {
       ScaffoldMessenger.of(context).clearSnackBars();
@@ -83,13 +86,12 @@ class ISnackbar {
           ],
         ),
         behavior: SnackBarBehavior.floating,
-        action: action ??
-            SnackBarAction(
-              label: 'Hide',
-              textColor: context.theme.snackBarTheme.contentTextStyle?.color,
-              onPressed: () =>
-                  ScaffoldMessenger.of(context).hideCurrentSnackBar(),
-            ),
+        action: SnackBarAction(
+          label: actionLabel,
+          textColor: context.theme.bottomAppBarColor,
+          onPressed: onAction ??
+              () => ScaffoldMessenger.of(context).hideCurrentSnackBar(),
+        ),
         shape: IStyles.shape,
         duration: duration,
       ),

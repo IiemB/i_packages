@@ -4,7 +4,7 @@ import 'package:i_packages/i_packages.dart';
 class ISnackbar {
   ISnackbar._();
 
-  static Future<void> showErrorSnakbar(
+  static Future<void> showErrorSnackBar(
     BuildContext context, {
     required String message,
     bool clearQueue = true,
@@ -33,7 +33,7 @@ class ISnackbar {
     );
   }
 
-  static Future<void> showSuccessSnackbar(
+  static Future<void> showSuccessSnackBar(
     BuildContext context, {
     required String message,
     bool clearQueue = true,
@@ -60,7 +60,7 @@ class ISnackbar {
     );
   }
 
-  static Future<void> showLoadingSnackbar(
+  static Future<void> showLoadingSnackBar(
     BuildContext context, {
     bool clearQueue = true,
     String loadingText = 'Loading',

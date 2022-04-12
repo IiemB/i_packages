@@ -9,7 +9,7 @@ class ISnackbar {
     required String message,
     bool clearQueue = true,
     Duration snackBarDuration = const Duration(seconds: 4),
-    String actionLabel = 'Hide',
+    String? actionLabel,
     void Function()? onAction,
   }) async {
     if (clearQueue) {
@@ -21,12 +21,14 @@ class ISnackbar {
         content: Text(message),
         behavior: SnackBarBehavior.floating,
         duration: snackBarDuration,
-        action: SnackBarAction(
-          label: actionLabel,
-          textColor: context.theme.bottomAppBarColor,
-          onPressed: onAction ??
-              () => ScaffoldMessenger.of(context).hideCurrentSnackBar(),
-        ),
+        action: actionLabel == null
+            ? null
+            : SnackBarAction(
+                label: actionLabel,
+                textColor: context.theme.bottomAppBarColor,
+                onPressed: onAction ??
+                    () => ScaffoldMessenger.of(context).hideCurrentSnackBar(),
+              ),
         backgroundColor: Theme.of(context).errorColor,
         shape: IStyles.shape,
       ),
@@ -38,7 +40,7 @@ class ISnackbar {
     required String message,
     bool clearQueue = true,
     Duration snackBarDuration = const Duration(seconds: 4),
-    String actionLabel = 'Hide',
+    String? actionLabel,
     void Function()? onAction,
   }) async {
     if (clearQueue) {
@@ -49,12 +51,14 @@ class ISnackbar {
       SnackBar(
         content: Text(message),
         behavior: SnackBarBehavior.floating,
-        action: SnackBarAction(
-          label: actionLabel,
-          textColor: context.theme.bottomAppBarColor,
-          onPressed: onAction ??
-              () => ScaffoldMessenger.of(context).hideCurrentSnackBar(),
-        ),
+        action: actionLabel == null
+            ? null
+            : SnackBarAction(
+                label: actionLabel,
+                textColor: context.theme.bottomAppBarColor,
+                onPressed: onAction ??
+                    () => ScaffoldMessenger.of(context).hideCurrentSnackBar(),
+              ),
         shape: IStyles.shape,
       ),
     );
@@ -63,9 +67,9 @@ class ISnackbar {
   static Future<void> showLoadingSnackBar(
     BuildContext context, {
     bool clearQueue = true,
-    String loadingText = 'Loading',
+    required String loadingText,
     Duration duration = const Duration(seconds: 30),
-    String actionLabel = 'Hide',
+    String? actionLabel,
     void Function()? onAction,
   }) async {
     if (clearQueue) {
@@ -86,12 +90,14 @@ class ISnackbar {
           ],
         ),
         behavior: SnackBarBehavior.floating,
-        action: SnackBarAction(
-          label: actionLabel,
-          textColor: context.theme.bottomAppBarColor,
-          onPressed: onAction ??
-              () => ScaffoldMessenger.of(context).hideCurrentSnackBar(),
-        ),
+        action: actionLabel == null
+            ? null
+            : SnackBarAction(
+                label: actionLabel,
+                textColor: context.theme.bottomAppBarColor,
+                onPressed: onAction ??
+                    () => ScaffoldMessenger.of(context).hideCurrentSnackBar(),
+              ),
         shape: IStyles.shape,
         duration: duration,
       ),

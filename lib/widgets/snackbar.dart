@@ -30,7 +30,6 @@ class ISnackbar {
                     () => ScaffoldMessenger.of(context).hideCurrentSnackBar(),
               ),
         backgroundColor: Theme.of(context).errorColor,
-        shape: IStyles.shape,
       ),
     );
   }
@@ -59,7 +58,6 @@ class ISnackbar {
                 onPressed: onAction ??
                     () => ScaffoldMessenger.of(context).hideCurrentSnackBar(),
               ),
-        shape: IStyles.shape,
       ),
     );
   }
@@ -98,7 +96,6 @@ class ISnackbar {
                 onPressed: onAction ??
                     () => ScaffoldMessenger.of(context).hideCurrentSnackBar(),
               ),
-        shape: IStyles.shape,
         duration: duration,
       ),
     );

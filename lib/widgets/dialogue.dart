@@ -57,7 +57,6 @@ class IDialogue {
                   ],
                 ),
             backgroundColor: backgroundColor,
-            shape: IStyles.shape,
           ),
         );
       },
@@ -90,7 +89,6 @@ class IDialogue {
           onWillPop: onWillPop,
           child: AlertDialog(
             backgroundColor: backgroundColor,
-            shape: IStyles.shape,
             title: Text(title),
             content: content ?? Text(middleText),
             titleTextStyle: titleStyle,
@@ -124,7 +122,6 @@ class IDialogue {
       builder: (context) {
         return AlertDialog(
           backgroundColor: backgroundColor,
-          shape: IStyles.shape,
           title: const Text('Error'),
           content: Text(middleText),
           actions: [

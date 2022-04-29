@@ -115,7 +115,6 @@ class _ICountryCodePickerState extends State<ICountryCodePicker> {
                 const SizedBox(height: 20),
                 Expanded(
                   child: ListView.builder(
-                    physics: const BouncingScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: filteredCountries.length,
                     itemBuilder: (ctx, index) => Column(

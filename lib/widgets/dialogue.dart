@@ -63,7 +63,7 @@ class IDialogue {
     ).whenComplete(() => isDialogueOpen = false);
   }
 
-  static Future<void> showConfirmDialogue(
+  static Future<T?> showConfirmDialogue<T>(
     BuildContext context, {
     required String title,
     String middleText = '',
@@ -81,7 +81,7 @@ class IDialogue {
   }) async {
     isDialogueOpen = true;
 
-    await showDialog(
+    final _reslut = await showDialog<T>(
       context: context,
       barrierDismissible: barrierDismissible,
       builder: (context) {
@@ -101,9 +101,11 @@ class IDialogue {
         );
       },
     ).whenComplete(() => isDialogueOpen = false);
+
+    return _reslut;
   }
 
-  static Future<void> showErrorDialogue(
+  static Future<T?> showErrorDialogue<T>(
     BuildContext context, {
     required String middleText,
     bool barrierDismissible = true,
@@ -116,7 +118,7 @@ class IDialogue {
 
     isDialogueOpen = true;
 
-    await showDialog(
+    final _result = await showDialog(
       context: context,
       barrierDismissible: barrierDismissible,
       builder: (context) {
@@ -133,5 +135,7 @@ class IDialogue {
         );
       },
     ).whenComplete(() => isDialogueOpen = false);
+
+    return _result;
   }
 }

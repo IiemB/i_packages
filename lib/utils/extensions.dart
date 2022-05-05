@@ -12,8 +12,6 @@ extension BuildContextExtension on BuildContext {
       MediaQuery.of(this).size.height * (percent / 100);
 
   ThemeData get theme => Theme.of(this);
-
-  String? get currentRoute => ModalRoute.of(this)?.settings.name;
 }
 
 extension IntExtension on int {

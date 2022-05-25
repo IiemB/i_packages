@@ -101,7 +101,7 @@ class ISnackbar {
     );
   }
 
-  static void clearSnackBars(BuildContext context) {
+  static Future<void> clearSnackBars(BuildContext context) async {
     ScaffoldMessenger.of(context).clearSnackBars();
   }
 }

@@ -1,115 +1,141 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:i_packages/configs/configs.dart';
+import 'package:i_packages/i_packages.dart';
 
 class IDialogue {
-  static Future<void> showLoadingDialogue({
+  static bool isDialogueOpen = false;
+
+  static Future<T?> show<T>(
+    BuildContext context, {
+    required Widget alertDialog,
+    Future<bool> Function()? onWillPop,
+    bool barrierDismissible = true,
+    Color? backgroundColor,
+  }) async {
+    isDialogueOpen = true;
+
+    final _result = await showDialog<T>(
+      context: context,
+      barrierDismissible: barrierDismissible,
+      builder: (context) {
+        return WillPopScope(
+          onWillPop: onWillPop,
+          child: alertDialog,
+        );
+      },
+    ).whenComplete(() => isDialogueOpen = false);
+
+    return _result;
+  }
+
+  static Future<void> showLoadingDialogue(
+    BuildContext context, {
+    Widget? content,
+    bool barrierDismissible = true,
+    Color? backgroundColor,
+    Future<bool> Function()? onWillPop,
+    String loadingText = 'Loading',
+  }) async {
+    isDialogueOpen = true;
+
+    await showDialog(
+      context: context,
+      barrierDismissible: barrierDismissible,
+      builder: (context) {
+        return WillPopScope(
+          onWillPop: onWillPop,
+          child: AlertDialog(
+            content: content ??
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SizedBox.square(
+                      dimension: context.width / 10,
+                      child: const CircularProgressIndicator(),
+                    ),
+                    const IGap(),
+                    Text(loadingText)
+                  ],
+                ),
+            backgroundColor: backgroundColor,
+          ),
+        );
+      },
+    ).whenComplete(() => isDialogueOpen = false);
+  }
+
+  static Future<T?> showConfirmDialogue<T>(
+    BuildContext context, {
     required String title,
     String middleText = '',
     Widget? content,
-    bool? barrierDismissible,
-    Color? backgroundColor,
-    Future<bool> Function()? onWillPop,
-  }) async {
-    await Get.defaultDialog(
-      radius: IStyles.radiusValue,
-      barrierDismissible: barrierDismissible ?? true,
-      title: title,
-      onWillPop: onWillPop,
-      middleText: middleText,
-      content: content ?? const CircularProgressIndicator(),
-      backgroundColor: backgroundColor,
-      actions: [],
-    );
-  }
-
-  static Future<void> showConfirmDialogue({
-    required String title,
-    String? middleText = '',
-    Widget? content,
-    bool? barrierDismissible,
+    bool barrierDismissible = true,
     List<Widget>? actions,
     Color? backgroundColor,
     void Function()? onConfirm,
+    String confirmText = 'OK',
     void Function()? onCancel,
+    String cancelText = 'Cancel',
     TextStyle? titleStyle,
     TextStyle? middleTextStyle,
     Future<bool> Function()? onWillPop,
   }) async {
-    await Get.defaultDialog(
-      radius: IStyles.radiusValue,
-      barrierDismissible: barrierDismissible ?? true,
-      title: title,
-      onWillPop: onWillPop,
-      middleText: middleText!,
-      content: content,
-      titleStyle: titleStyle,
-      middleTextStyle: middleTextStyle,
-      backgroundColor: backgroundColor,
-      actions: actions ??
-          [
-            SizedBox(
-              width: Get.width / 4,
-              child: ElevatedButton(
-                style: IStyles.elevatedButtonStyle(
-                  primary: Get.theme.colorScheme.secondary,
-                ),
-                onPressed: onCancel,
-                child: Text(
-                  'No'.tr,
-                ),
-              ),
-            ),
-            const SizedBox(
-              width: 30,
-            ),
-            SizedBox(
-              width: Get.width / 4,
-              child: ElevatedButton(
-                style: IStyles.elevatedButtonStyle(
-                  primary: Get.theme.colorScheme.secondary,
-                ),
-                onPressed: onConfirm,
-                child: Text(
-                  'Yes'.tr,
-                ),
-              ),
-            ),
-          ],
-    );
+    isDialogueOpen = true;
+
+    final _reslut = await showDialog<T>(
+      context: context,
+      barrierDismissible: barrierDismissible,
+      builder: (context) {
+        return WillPopScope(
+          onWillPop: onWillPop,
+          child: AlertDialog(
+            backgroundColor: backgroundColor,
+            title: Text(title),
+            content: content ?? Text(middleText),
+            titleTextStyle: titleStyle,
+            actions: actions ??
+                [
+                  TextButton(onPressed: onCancel, child: Text(cancelText)),
+                  TextButton(onPressed: onConfirm, child: Text(confirmText)),
+                ],
+          ),
+        );
+      },
+    ).whenComplete(() => isDialogueOpen = false);
+
+    return _reslut;
   }
 
-  static Future<void> showErrorDialogue({
-    required String? middleText,
-    bool? barrierDismissible,
+  static Future<T?> showErrorDialogue<T>(
+    BuildContext context, {
+    required String middleText,
+    bool barrierDismissible = true,
     Color? backgroundColor,
+    String mainTextButton = 'OK',
   }) async {
-    if (Get.isDialogOpen!) {
-      Get.back();
+    if (isDialogueOpen) {
+      Navigator.pop(context);
     }
-    await Get.defaultDialog(
-      radius: IStyles.radiusValue,
-      barrierDismissible: barrierDismissible ?? true,
-      title: 'Error'.tr,
-      middleText: middleText!,
-      backgroundColor: backgroundColor,
-      actions: [
-        SizedBox(
-          width: Get.width / 3,
-          child: ElevatedButton(
-            style: IStyles.elevatedButtonStyle(
-              primary: Get.theme.colorScheme.secondary,
+
+    isDialogueOpen = true;
+
+    final _result = await showDialog(
+      context: context,
+      barrierDismissible: barrierDismissible,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: backgroundColor,
+          title: const Text('Error'),
+          content: Text(middleText),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text(mainTextButton),
             ),
-            onPressed: () {
-              Get.back();
-            },
-            child: Text(
-              'Ok'.tr,
-              style: const TextStyle(color: Colors.black),
-            ),
-          ),
-        ),
-      ],
-    );
+          ],
+        );
+      },
+    ).whenComplete(() => isDialogueOpen = false);
+
+    return _result;
   }
 }

@@ -31,6 +31,7 @@ linter:
     require_trailing_commas: true
     invalid_annotation_target: false
     avoid_print: true
+    unnecessary_lambdas: true
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
 

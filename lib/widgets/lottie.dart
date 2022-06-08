@@ -16,33 +16,32 @@ class ILottie extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Builder(
-      builder: (_) {
-        switch (iLottieStyle) {
-          case ILottieStyle.emptyStateTumbleWeed:
-            return Lottie.asset(
-              'assets/lottie/empty_state_tumbleweed.zip',
-              frameRate: frameRate ?? FrameRate.max,
-              fit: fit,
-              width: width,
-            );
-          case ILottieStyle.loadingCoffeeBeans:
-            return Lottie.asset(
-              'assets/lottie/loading_coffee_beans.zip',
-              frameRate: frameRate ?? FrameRate.max,
-              fit: fit,
-              width: width,
-            );
-          case ILottieStyle.profilePeopleMorph:
-            return Lottie.asset(
-              'assets/lottie/people_morph_flow.zip',
-              frameRate: frameRate ?? FrameRate.max,
-              fit: fit,
-              width: width,
-            );
-        }
-      },
-    );
+    switch (iLottieStyle) {
+      case ILottieStyle.emptyStateTumbleWeed:
+        return Lottie.asset(
+          'assets/lottie/empty_state_tumbleweed.zip',
+          frameRate: frameRate ?? FrameRate.max,
+          fit: fit,
+          width: width,
+          package: 'i_packages',
+        );
+      case ILottieStyle.loadingCoffeeBeans:
+        return Lottie.asset(
+          'assets/lottie/loading_coffee_beans.zip',
+          frameRate: frameRate ?? FrameRate.max,
+          fit: fit,
+          width: width,
+          package: 'i_packages',
+        );
+      case ILottieStyle.profilePeopleMorph:
+        return Lottie.asset(
+          'assets/lottie/people_morph_flow.zip',
+          frameRate: frameRate ?? FrameRate.max,
+          fit: fit,
+          width: width,
+          package: 'i_packages',
+        );
+    }
   }
 }
 

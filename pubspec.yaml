@@ -8,8 +8,10 @@ environment:
   flutter: ">=2.10.5"
 
 dependencies:
+  flex_color_scheme: ^5.0.1
   flutter:
     sdk: flutter
+  google_fonts: ^3.0.1
   intl: ^0.17.0
   lottie: ^1.2.1
 
@@ -25,6 +27,7 @@ flutter:
   assets:
     - assets/flags/
     - assets/lottie/
+
 #
 # For details regarding assets in packages, see
 # https://flutter.dev/assets-and-images/#from-packages

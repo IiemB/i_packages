@@ -42,12 +42,12 @@ class IValidators {
         : phoneNumber;
 
     /// validate country code startsWith +
-    final _ccode = countryCodeWithPlus.startsWith('+')
+    final ccode = countryCodeWithPlus.startsWith('+')
         ? _replaceCharAt(countryCodeWithPlus, 0, '')
         : countryCodeWithPlus;
 
     /// validate startsWith 62
-    phoneNumber = phoneNumber.startsWith(_ccode, 0)
+    phoneNumber = phoneNumber.startsWith(ccode, 0)
         ? _replaceCharAt(phoneNumber, 0, countryCodeWithPlus.substring(0, 2))
         : phoneNumber;
 

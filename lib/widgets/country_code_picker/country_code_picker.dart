@@ -46,7 +46,7 @@ class ICountryCodePicker extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _ICountryCodePickerState createState() => _ICountryCodePickerState();
+  State<ICountryCodePicker> createState() => _ICountryCodePickerState();
 }
 
 class _ICountryCodePickerState extends State<ICountryCodePicker> {

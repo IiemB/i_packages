@@ -13,7 +13,7 @@ class IDialogue {
   }) async {
     isDialogueOpen = true;
 
-    final _result = await showDialog<T>(
+    final result = await showDialog<T>(
       context: context,
       barrierDismissible: barrierDismissible,
       builder: (context) {
@@ -24,7 +24,7 @@ class IDialogue {
       },
     ).whenComplete(() => isDialogueOpen = false);
 
-    return _result;
+    return result;
   }
 
   static Future<void> showLoadingDialogue(
@@ -81,7 +81,7 @@ class IDialogue {
   }) async {
     isDialogueOpen = true;
 
-    final _reslut = await showDialog<T>(
+    final reslut = await showDialog<T>(
       context: context,
       barrierDismissible: barrierDismissible,
       builder: (context) {
@@ -102,7 +102,7 @@ class IDialogue {
       },
     ).whenComplete(() => isDialogueOpen = false);
 
-    return _reslut;
+    return reslut;
   }
 
   static Future<T?> showErrorDialogue<T>(
@@ -118,7 +118,7 @@ class IDialogue {
 
     isDialogueOpen = true;
 
-    final _result = await showDialog(
+    final result = await showDialog(
       context: context,
       barrierDismissible: barrierDismissible,
       builder: (context) {
@@ -136,6 +136,6 @@ class IDialogue {
       },
     ).whenComplete(() => isDialogueOpen = false);
 
-    return _result;
+    return result;
   }
 }

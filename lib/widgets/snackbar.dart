@@ -79,9 +79,9 @@ class ISnackbar {
         content: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox.square(
-              dimension: context.widthByPercent(5),
-              child: const CircularProgressIndicator(),
+            const SizedBox.square(
+              dimension: 18,
+              child: CircularProgressIndicator(),
             ),
             const IGap(),
             Text(loadingText),

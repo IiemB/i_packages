@@ -21,6 +21,10 @@ class IDateFormatStyle {
   static final DateFormat df2 =
       DateFormat('HH:mm, dd MMM yyy', _locale.languageCode);
 
+  /// DateFormat('HH:mm, dd/MM/yy')
+  static final DateFormat df3 =
+      DateFormat('HH:mm, dd/MM/yy', _locale.languageCode);
+
   /// DateFormat('HH:mm dd MMM yyy')
   static final DateFormat hourMinute =
       DateFormat('HH:mm:ss', _locale.languageCode);
